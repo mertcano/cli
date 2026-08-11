@@ -495,6 +495,12 @@ qfex twap add --symbol AAPL-USD --side SELL --qty 50 --num-orders 5 --interval 6
 
 # With a client ID for tracking
 qfex twap add --symbol AAPL-USD --side BUY --qty 100 --num-orders 10 --interval 30 --client-twap-id rebalance-001
+
+# Schedule a TWAP using Unix time (fractional seconds are supported)
+qfex twap add --symbol AAPL-USD --side BUY --qty 100 --num-orders 10 --interval 30 --start-time 1785499200.25
+
+# Set the worst acceptable execution price (maximum for BUY, minimum for SELL)
+qfex twap add --symbol AAPL-USD --side BUY --qty 100 --num-orders 10 --interval 30 --worst-price 250
 ```
 
 ---

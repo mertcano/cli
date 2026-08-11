@@ -737,6 +737,16 @@ func (s *Server) handleGetAvailableLeverage(ctx context.Context, p protocol.GetL
 }
 
 func (s *Server) handleAddTwap(ctx context.Context, p protocol.AddTwapParams) protocol.Response {
+	params := addTwapWSParams(p)
+	cmd := map[string]any{"type": "add_twap", "params": params}
+	data, err := s.d.trade.Send(ctx, cmd, "twap_response", "")
+	if err != nil {
+		return errResp(err.Error())
+	}
+	return okResp(data)
+}
+
+func addTwapWSParams(p protocol.AddTwapParams) map[string]any {
 	params := map[string]any{
 		"symbol":              p.Symbol,
 		"side":                p.Side,
@@ -748,12 +758,13 @@ func (s *Server) handleAddTwap(ctx context.Context, p protocol.AddTwapParams) pr
 	if p.ClientTwapID != "" {
 		params["client_twap_id"] = p.ClientTwapID
 	}
-	cmd := map[string]any{"type": "add_twap", "params": params}
-	data, err := s.d.trade.Send(ctx, cmd, "twap_response", "")
-	if err != nil {
-		return errResp(err.Error())
+	if p.StartTime != nil {
+		params["start_time"] = *p.StartTime
 	}
-	return okResp(data)
+	if p.WorstPrice != nil {
+		params["worst_price"] = *p.WorstPrice
+	}
+	return params
 }
 
 func (s *Server) handleCancelStopOrder(ctx context.Context, p protocol.CancelStopOrderParams) protocol.Response {

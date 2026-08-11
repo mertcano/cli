@@ -186,13 +186,15 @@ type SetLeverageParams struct {
 }
 
 type AddTwapParams struct {
-	Symbol            string  `json:"symbol"`
-	Side              string  `json:"side"`
-	TotalQuantity     float64 `json:"total_quantity"`
-	NumOrders         int     `json:"num_orders"`
-	OrderIntervalSecs int     `json:"order_interval_secs"`
-	ReduceOnly        bool    `json:"reduce_only"`
-	ClientTwapID      string  `json:"client_twap_id,omitempty"`
+	Symbol            string   `json:"symbol"`
+	Side              string   `json:"side"`
+	TotalQuantity     float64  `json:"total_quantity"`
+	NumOrders         int      `json:"num_orders"`
+	OrderIntervalSecs int      `json:"order_interval_secs"`
+	ReduceOnly        bool     `json:"reduce_only"`
+	ClientTwapID      string   `json:"client_twap_id,omitempty"`
+	StartTime         *float64 `json:"start_time,omitempty"`
+	WorstPrice        *float64 `json:"worst_price,omitempty"`
 }
 
 type CancelStopOrderParams struct {
