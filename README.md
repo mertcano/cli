@@ -16,6 +16,32 @@ All output is JSON. Every command is stateless from the caller's perspective —
 
 ## Installation
 
+```sh
+curl -fsSL https://raw.githubusercontent.com/QFEX-Org/cli/main/install.sh | sh
+```
+
+The script detects your OS and CPU architecture and picks the right release — Homebrew on macOS,
+the `.deb` package on Debian/Ubuntu (which also installs shell completions), a tarball everywhere
+else — and verifies the SHA-256 checksum before installing.
+
+Options, passed after `sh -s --`:
+
+```sh
+# install a specific version
+curl -fsSL https://raw.githubusercontent.com/QFEX-Org/cli/main/install.sh | sh -s -- --version v1.2.3
+
+# install without sudo, into a directory you own
+curl -fsSL https://raw.githubusercontent.com/QFEX-Org/cli/main/install.sh | sh -s -- --bin-dir ~/.local/bin
+
+# force a method: auto (default), brew, deb or tarball
+curl -fsSL https://raw.githubusercontent.com/QFEX-Org/cli/main/install.sh | sh -s -- --method tarball
+```
+
+`QFEX_VERSION`, `QFEX_BIN_DIR` and `QFEX_METHOD` work as environment variables too.
+
+<details>
+<summary>Manual installation</summary>
+
 **macOS** — Homebrew:
 
 ```sh
@@ -41,6 +67,8 @@ ARCH=$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')
 curl -fsSL "https://github.com/QFEX-org/cli/releases/download/v${VERSION}/qfex_${VERSION}_linux_${ARCH}.tar.gz" | tar xz qfex
 sudo install -m 755 qfex /usr/local/bin/qfex
 ```
+
+</details>
 
 ---
 
