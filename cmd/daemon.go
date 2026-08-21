@@ -13,9 +13,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/qfex/cli/internal/config"
-	"github.com/qfex/cli/internal/daemon"
-	"github.com/qfex/cli/internal/protocol"
+	"github.com/QFEX-org/cli/internal/config"
+	"github.com/QFEX-org/cli/internal/daemon"
+	"github.com/QFEX-org/cli/internal/protocol"
 )
 
 var daemonCmd = &cobra.Command{

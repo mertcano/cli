@@ -8,10 +8,10 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/qfex/cli/internal/client"
-	"github.com/qfex/cli/internal/config"
-	"github.com/qfex/cli/internal/oauth"
-	"github.com/qfex/cli/internal/protocol"
+	"github.com/QFEX-org/cli/internal/client"
+	"github.com/QFEX-org/cli/internal/config"
+	"github.com/QFEX-org/cli/internal/oauth"
+	"github.com/QFEX-org/cli/internal/protocol"
 )
 
 var (

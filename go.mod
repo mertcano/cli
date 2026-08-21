@@ -1,4 +1,4 @@
-module github.com/qfex/cli
+module github.com/QFEX-org/cli
 
 go 1.25.0
 

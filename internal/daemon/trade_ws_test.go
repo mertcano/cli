@@ -3,7 +3,7 @@ package daemon
 import (
 	"testing"
 
-	"github.com/qfex/cli/internal/config"
+	"github.com/QFEX-org/cli/internal/config"
 )
 
 func TestBuildAuthMessageWithJWTIncludesAccountIDWhenSelectedSubaccountSet(t *testing.T) {

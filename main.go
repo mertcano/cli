@@ -1,6 +1,6 @@
 package main
 
-import "github.com/qfex/cli/cmd"
+import "github.com/QFEX-org/cli/cmd"
 
 func main() {
 	cmd.Execute()

@@ -3,7 +3,7 @@ package cmd
 import (
 	"testing"
 
-	"github.com/qfex/cli/internal/config"
+	"github.com/QFEX-org/cli/internal/config"
 )
 
 func TestCurrentSubaccountOutputPrimaryWhenUnset(t *testing.T) {

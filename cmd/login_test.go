@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/qfex/cli/internal/config"
+	"github.com/QFEX-org/cli/internal/config"
 	"github.com/spf13/cobra"
 )
 

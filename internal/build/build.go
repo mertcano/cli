@@ -5,7 +5,7 @@ import (
 	"runtime"
 )
 
-// Version is set at build time via ldflags: -X github.com/qfex/cli/internal/build.Version=v1.2.3
+// Version is set at build time via ldflags: -X github.com/QFEX-org/cli/internal/build.Version=v1.2.3
 var Version = "dev"
 
 // UserAgent returns the User-Agent string for HTTP and WebSocket connections.

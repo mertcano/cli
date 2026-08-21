@@ -1,7 +1,7 @@
 #!/bin/sh
 # qfex CLI installer.
 #
-#   curl -fsSL https://raw.githubusercontent.com/QFEX-Org/cli/main/install.sh | sh
+#   curl -fsSL https://raw.githubusercontent.com/QFEX-org/cli/main/install.sh | sh
 #
 # Detects your OS and CPU architecture, then installs the matching release:
 #   macOS         Homebrew if available, otherwise a tarball
@@ -16,7 +16,7 @@
 
 set -eu
 
-REPO="QFEX-Org/cli"
+REPO="QFEX-org/cli"
 VERSION="${QFEX_VERSION:-}"
 BIN_DIR="${QFEX_BIN_DIR:-}"
 METHOD="${QFEX_METHOD:-auto}"
@@ -25,7 +25,7 @@ usage() {
 	cat <<'EOF'
 qfex CLI installer.
 
-  curl -fsSL https://raw.githubusercontent.com/QFEX-Org/cli/main/install.sh | sh
+  curl -fsSL https://raw.githubusercontent.com/QFEX-org/cli/main/install.sh | sh
 
 Detects your OS and CPU architecture, then installs the matching release:
   macOS          Homebrew if available, otherwise a tarball

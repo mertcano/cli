@@ -13,8 +13,8 @@ import (
 	"github.com/spf13/cobra"
 	"golang.org/x/term"
 
-	"github.com/qfex/cli/internal/config"
-	"github.com/qfex/cli/internal/oauth"
+	"github.com/QFEX-org/cli/internal/config"
+	"github.com/QFEX-org/cli/internal/oauth"
 )
 
 var loginAPIKey bool

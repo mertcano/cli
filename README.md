@@ -17,7 +17,7 @@ All output is JSON. Every command is stateless from the caller's perspective —
 ## Installation
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/QFEX-Org/cli/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/QFEX-org/cli/main/install.sh | sh
 ```
 
 The script detects your OS and CPU architecture and picks the right release — Homebrew on macOS,
@@ -28,13 +28,13 @@ Options, passed after `sh -s --`:
 
 ```sh
 # install a specific version
-curl -fsSL https://raw.githubusercontent.com/QFEX-Org/cli/main/install.sh | sh -s -- --version v1.2.3
+curl -fsSL https://raw.githubusercontent.com/QFEX-org/cli/main/install.sh | sh -s -- --version v1.2.3
 
 # install without sudo, into a directory you own
-curl -fsSL https://raw.githubusercontent.com/QFEX-Org/cli/main/install.sh | sh -s -- --bin-dir ~/.local/bin
+curl -fsSL https://raw.githubusercontent.com/QFEX-org/cli/main/install.sh | sh -s -- --bin-dir ~/.local/bin
 
 # force a method: auto (default), brew, deb or tarball
-curl -fsSL https://raw.githubusercontent.com/QFEX-Org/cli/main/install.sh | sh -s -- --method tarball
+curl -fsSL https://raw.githubusercontent.com/QFEX-org/cli/main/install.sh | sh -s -- --method tarball
 ```
 
 `QFEX_VERSION`, `QFEX_BIN_DIR` and `QFEX_METHOD` work as environment variables too.

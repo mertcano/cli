@@ -7,7 +7,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/qfex/cli/internal/protocol"
+	"github.com/QFEX-org/cli/internal/protocol"
 )
 
 var symbolsCmd = &cobra.Command{
@@ -54,7 +54,7 @@ var bboCmd = &cobra.Command{
 }
 
 var orderbookCmd = &cobra.Command{
-	Use:   "orderbook <symbol>",
+	Use:               "orderbook <symbol>",
 	Short:             "Get the order book for a symbol",
 	Args:              cobra.ExactArgs(1),
 	ValidArgsFunction: symbolCompletion,

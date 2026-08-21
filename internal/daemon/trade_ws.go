@@ -10,11 +10,11 @@ import (
 	"sync"
 	"time"
 
+	"github.com/QFEX-org/cli/internal/auth"
+	"github.com/QFEX-org/cli/internal/build"
+	"github.com/QFEX-org/cli/internal/config"
+	"github.com/QFEX-org/cli/internal/oauth"
 	"github.com/gorilla/websocket"
-	"github.com/qfex/cli/internal/auth"
-	"github.com/qfex/cli/internal/build"
-	"github.com/qfex/cli/internal/config"
-	"github.com/qfex/cli/internal/oauth"
 )
 
 // tradeMessage represents any message from the Trade WebSocket.

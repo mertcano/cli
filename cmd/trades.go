@@ -3,7 +3,7 @@ package cmd
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/qfex/cli/internal/protocol"
+	"github.com/QFEX-org/cli/internal/protocol"
 )
 
 var tradesUserCmd = &cobra.Command{

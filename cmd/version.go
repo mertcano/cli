@@ -8,8 +8,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/qfex/cli/internal/build"
-	"github.com/qfex/cli/internal/config"
+	"github.com/QFEX-org/cli/internal/build"
+	"github.com/QFEX-org/cli/internal/config"
 )
 
 var versionCmd = &cobra.Command{
@@ -21,9 +21,9 @@ var versionCmd = &cobra.Command{
 }
 
 var envCmd = &cobra.Command{
-	Use:   "env [prod|uat]",
-	Short: "Show or set the environment (prod or uat)",
-	Args:  cobra.MaximumNArgs(1),
+	Use:       "env [prod|uat]",
+	Short:     "Show or set the environment (prod or uat)",
+	Args:      cobra.MaximumNArgs(1),
 	ValidArgs: []string{"prod", "uat"},
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if len(args) == 0 {

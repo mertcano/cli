@@ -11,10 +11,10 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/qfex/cli/internal/auth"
-	"github.com/qfex/cli/internal/build"
-	"github.com/qfex/cli/internal/config"
-	"github.com/qfex/cli/internal/oauth"
+	"github.com/QFEX-org/cli/internal/auth"
+	"github.com/QFEX-org/cli/internal/build"
+	"github.com/QFEX-org/cli/internal/config"
+	"github.com/QFEX-org/cli/internal/oauth"
 )
 
 // apiGetURL makes a GET request to an arbitrary URL and returns the parsed JSON body.

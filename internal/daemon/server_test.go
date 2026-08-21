@@ -3,7 +3,7 @@ package daemon
 import (
 	"testing"
 
-	"github.com/qfex/cli/internal/protocol"
+	"github.com/QFEX-org/cli/internal/protocol"
 )
 
 func TestAddTwapWSParamsIncludesOptionalExecutionControls(t *testing.T) {

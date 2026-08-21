@@ -12,7 +12,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/qfex/cli/internal/protocol"
+	"github.com/QFEX-org/cli/internal/protocol"
 )
 
 // Server listens on a Unix domain socket and dispatches IPC requests.
@@ -825,7 +825,6 @@ func (s *Server) handleGetUserTrades(ctx context.Context, p protocol.GetUserTrad
 	}
 	return okResp(data)
 }
-
 
 func (s *Server) handleCancelOnDisconnect(ctx context.Context, p protocol.CancelOnDisconnectParams) protocol.Response {
 	cmd := map[string]any{

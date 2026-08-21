@@ -12,7 +12,7 @@ import (
 
 	"github.com/gorilla/websocket"
 
-	"github.com/qfex/cli/internal/build"
+	"github.com/QFEX-org/cli/internal/build"
 )
 
 // mdsMessage is the raw incoming message from the MDS WebSocket.
@@ -29,30 +29,30 @@ type mdsMessage struct {
 	Contents     json.RawMessage `json:"contents,omitempty"`
 
 	// Flat fields used in some message formats
-	Symbol        string          `json:"symbol,omitempty"`
-	Time          string          `json:"time,omitempty"`
-	Bid           [][]string      `json:"bid,omitempty"`
-	Ask           [][]string      `json:"ask,omitempty"`
-	SigFigs       int             `json:"sig_figs,omitempty"`
-	TradeID       string          `json:"trade_id,omitempty"`
-	Size          string          `json:"size,omitempty"`
-	Price         string          `json:"price,omitempty"`
-	Side          string          `json:"side,omitempty"`
-	ExecutionType string          `json:"execution_type,omitempty"`
-	Start         string          `json:"start,omitempty"`
-	Resolution    string          `json:"resolution,omitempty"`
-	Open          string          `json:"open,omitempty"`
-	High          string          `json:"high,omitempty"`
-	Low           string          `json:"low,omitempty"`
-	Close         string          `json:"close,omitempty"`
-	USDVolume     json.Number     `json:"usdVolume,omitempty"`
-	Trades        json.Number     `json:"trades,omitempty"`
-	FundingRate   string          `json:"funding_rate,omitempty"`
-	TimeRemaining json.Number     `json:"time_remaining,omitempty"`
-	OpenInterest  string          `json:"open_interest,omitempty"`
-	MinPrice      string          `json:"min_price,omitempty"`
-	MaxPrice      string          `json:"max_price,omitempty"`
-	Source        string          `json:"source,omitempty"`
+	Symbol        string      `json:"symbol,omitempty"`
+	Time          string      `json:"time,omitempty"`
+	Bid           [][]string  `json:"bid,omitempty"`
+	Ask           [][]string  `json:"ask,omitempty"`
+	SigFigs       int         `json:"sig_figs,omitempty"`
+	TradeID       string      `json:"trade_id,omitempty"`
+	Size          string      `json:"size,omitempty"`
+	Price         string      `json:"price,omitempty"`
+	Side          string      `json:"side,omitempty"`
+	ExecutionType string      `json:"execution_type,omitempty"`
+	Start         string      `json:"start,omitempty"`
+	Resolution    string      `json:"resolution,omitempty"`
+	Open          string      `json:"open,omitempty"`
+	High          string      `json:"high,omitempty"`
+	Low           string      `json:"low,omitempty"`
+	Close         string      `json:"close,omitempty"`
+	USDVolume     json.Number `json:"usdVolume,omitempty"`
+	Trades        json.Number `json:"trades,omitempty"`
+	FundingRate   string      `json:"funding_rate,omitempty"`
+	TimeRemaining json.Number `json:"time_remaining,omitempty"`
+	OpenInterest  string      `json:"open_interest,omitempty"`
+	MinPrice      string      `json:"min_price,omitempty"`
+	MaxPrice      string      `json:"max_price,omitempty"`
+	Source        string      `json:"source,omitempty"`
 }
 
 // MDSWS manages the connection to the QFEX Market Data Service WebSocket.
@@ -61,9 +61,9 @@ type MDSWS struct {
 	state *State
 	log   *log.Logger
 
-	mu          sync.Mutex
-	conn        *websocket.Conn
-	subscribed  map[string]bool // channel keys that have been subscribed
+	mu         sync.Mutex
+	conn       *websocket.Conn
+	subscribed map[string]bool // channel keys that have been subscribed
 }
 
 func newMDSWS(url string, state *State, logger *log.Logger) *MDSWS {

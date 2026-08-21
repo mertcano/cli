@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/qfex/cli/internal/config"
+	"github.com/QFEX-org/cli/internal/config"
 )
 
 func TestSetAuthHeadersAddsRequestedAccountIDWhenSelectedSubaccountPresent(t *testing.T) {

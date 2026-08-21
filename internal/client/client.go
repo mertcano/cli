@@ -8,7 +8,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/qfex/cli/internal/protocol"
+	"github.com/QFEX-org/cli/internal/protocol"
 )
 
 // Client communicates with the qfex daemon over a Unix socket.

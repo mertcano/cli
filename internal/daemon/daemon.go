@@ -8,8 +8,8 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/qfex/cli/internal/config"
-	"github.com/qfex/cli/internal/protocol"
+	"github.com/QFEX-org/cli/internal/config"
+	"github.com/QFEX-org/cli/internal/protocol"
 )
 
 // Daemon coordinates the MDS/Trade WS connections and the IPC server.
