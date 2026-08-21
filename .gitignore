@@ -7,3 +7,6 @@ dist/
 # Go
 *.test
 *.out
+
+# Generated shell completions (goreleaser before hook)
+completions/

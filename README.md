@@ -16,8 +16,30 @@ All output is JSON. Every command is stateless from the caller's perspective —
 
 ## Installation
 
+**macOS** — Homebrew:
+
 ```sh
 brew install QFEX-org/tap/qfex
+```
+
+**Debian / Ubuntu** — `.deb` package (amd64 and arm64):
+
+```sh
+VERSION=$(curl -fsSL https://api.github.com/repos/QFEX-org/cli/releases/latest | sed -n 's/.*"tag_name": *"v\{0,1\}\([^"]*\)".*/\1/p')
+ARCH=$(dpkg --print-architecture)
+curl -fsSLO "https://github.com/QFEX-org/cli/releases/download/v${VERSION}/qfex_${VERSION}_linux_${ARCH}.deb"
+sudo dpkg -i "qfex_${VERSION}_linux_${ARCH}.deb"
+```
+
+The package installs `qfex` to `/usr/bin` along with bash, zsh, and fish completions. Upgrade by installing a newer `.deb` the same way; remove with `sudo apt remove qfex`.
+
+**Other Linux** — tarball:
+
+```sh
+VERSION=$(curl -fsSL https://api.github.com/repos/QFEX-org/cli/releases/latest | sed -n 's/.*"tag_name": *"v\{0,1\}\([^"]*\)".*/\1/p')
+ARCH=$(uname -m | sed 's/x86_64/amd64/;s/aarch64/arm64/')
+curl -fsSL "https://github.com/QFEX-org/cli/releases/download/v${VERSION}/qfex_${VERSION}_linux_${ARCH}.tar.gz" | tar xz qfex
+sudo install -m 755 qfex /usr/local/bin/qfex
 ```
 
 ---
