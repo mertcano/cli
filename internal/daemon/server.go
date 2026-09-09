@@ -592,9 +592,9 @@ func (s *Server) handleCancelAll(ctx context.Context) protocol.Response {
 
 func modifyOrderWSParams(p protocol.ModifyOrderParams) map[string]any {
 	params := map[string]any{
-		"symbol":     p.Symbol,
-		"order_id":   p.OrderID,
-		"side":       p.Side,
+		"symbol":      p.Symbol,
+		"order_id":    p.OrderID,
+		"side":        p.Side,
 		"order_type":  p.OrderType,
 		"reduce_only": p.ReduceOnly,
 	}
