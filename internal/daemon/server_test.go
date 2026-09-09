@@ -6,8 +6,6 @@ import (
 	"github.com/QFEX-org/cli/internal/protocol"
 )
 
-// The port requires reduce_only on every modify and rejects the request outright
-// when it is absent, so it must be sent even when false.
 func TestModifyOrderWSParamsAlwaysIncludesReduceOnly(t *testing.T) {
 	for _, reduceOnly := range []bool{false, true} {
 		params := modifyOrderWSParams(protocol.ModifyOrderParams{

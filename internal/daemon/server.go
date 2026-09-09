@@ -595,8 +595,7 @@ func modifyOrderWSParams(p protocol.ModifyOrderParams) map[string]any {
 		"symbol":     p.Symbol,
 		"order_id":   p.OrderID,
 		"side":       p.Side,
-		"order_type": p.OrderType,
-		// Required by the port, and must match the resting order.
+		"order_type":  p.OrderType,
 		"reduce_only": p.ReduceOnly,
 	}
 	if p.Price != 0 {
