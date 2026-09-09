@@ -157,6 +157,7 @@ type ModifyOrderParams struct {
 	Quantity   float64 `json:"quantity,omitempty"`
 	TakeProfit float64 `json:"take_profit,omitempty"`
 	StopLoss   float64 `json:"stop_loss,omitempty"`
+	ReduceOnly bool    `json:"reduce_only"`
 }
 
 type GetOrderParams struct {

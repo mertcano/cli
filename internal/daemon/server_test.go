@@ -6,6 +6,30 @@ import (
 	"github.com/QFEX-org/cli/internal/protocol"
 )
 
+// The port requires reduce_only on every modify and rejects the request outright
+// when it is absent, so it must be sent even when false.
+func TestModifyOrderWSParamsAlwaysIncludesReduceOnly(t *testing.T) {
+	for _, reduceOnly := range []bool{false, true} {
+		params := modifyOrderWSParams(protocol.ModifyOrderParams{
+			Symbol:     "BTC-USD",
+			OrderID:    "8e3d5f0e-6c2a-4a4f-9a4b-1f2c3d4e5f60",
+			Side:       "BUY",
+			OrderType:  "LIMIT",
+			Price:      65000.5,
+			Quantity:   1,
+			ReduceOnly: reduceOnly,
+		})
+
+		got, ok := params["reduce_only"]
+		if !ok {
+			t.Fatal("reduce_only missing from modify params")
+		}
+		if got != reduceOnly {
+			t.Fatalf("reduce_only = %v, want %v", got, reduceOnly)
+		}
+	}
+}
+
 func TestAddTwapWSParamsIncludesOptionalExecutionControls(t *testing.T) {
 	startTime := 1785499200.25
 	worstPrice := 65000.5

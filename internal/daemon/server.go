@@ -590,12 +590,14 @@ func (s *Server) handleCancelAll(ctx context.Context) protocol.Response {
 	return okResp(data)
 }
 
-func (s *Server) handleModifyOrder(ctx context.Context, p protocol.ModifyOrderParams) protocol.Response {
+func modifyOrderWSParams(p protocol.ModifyOrderParams) map[string]any {
 	params := map[string]any{
 		"symbol":     p.Symbol,
 		"order_id":   p.OrderID,
 		"side":       p.Side,
 		"order_type": p.OrderType,
+		// Required by the port, and must match the resting order.
+		"reduce_only": p.ReduceOnly,
 	}
 	if p.Price != 0 {
 		params["price"] = p.Price
@@ -609,7 +611,11 @@ func (s *Server) handleModifyOrder(ctx context.Context, p protocol.ModifyOrderPa
 	if p.StopLoss != 0 {
 		params["stop_loss"] = p.StopLoss
 	}
-	cmd := map[string]any{"type": "modify_order", "params": params}
+	return params
+}
+
+func (s *Server) handleModifyOrder(ctx context.Context, p protocol.ModifyOrderParams) protocol.Response {
+	cmd := map[string]any{"type": "modify_order", "params": modifyOrderWSParams(p)}
 	// Modify responses are always terminal (MODIFIED, CANNOT_MODIFY_NO_SUCH_ORDER, etc.).
 	// Match by order_id for precision.
 	data, err := s.d.trade.Send(ctx, cmd, "order_response", p.OrderID)
