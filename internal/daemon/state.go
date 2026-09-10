@@ -179,16 +179,16 @@ type State struct {
 
 func newState() *State {
 	return &State{
-		orderBooks:    make(map[string]*OrderBook),
-		bbos:          make(map[string]*BBO),
-		recentTrades:  make(map[string][]*PublicTrade),
-		candles:       make(map[string]map[string]*Candle),
+		orderBooks:      make(map[string]*OrderBook),
+		bbos:            make(map[string]*BBO),
+		recentTrades:    make(map[string][]*PublicTrade),
+		candles:         make(map[string]map[string]*Candle),
 		markPrices:      make(map[string]*MarkPrice),
 		fundingRates:    make(map[string]*FundingRate),
 		openInterests:   make(map[string]*OpenInterest),
 		underlierPrices: make(map[string]*UnderlierPrice),
-		positions:     make(map[string]*Position),
-		openOrders:    make(map[string]*Order),
+		positions:       make(map[string]*Position),
+		openOrders:      make(map[string]*Order),
 	}
 }
 

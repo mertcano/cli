@@ -125,7 +125,7 @@ func RunBrowserFlow(ctx context.Context, cfg Config) (Tokens, error) {
 	})
 
 	srv := &http.Server{Handler: mux}
-	go srv.Serve(ln) //nolint:errcheck
+	go srv.Serve(ln)                         //nolint:errcheck
 	defer srv.Shutdown(context.Background()) //nolint:errcheck
 
 	fmt.Printf("Opening browser for QFEX login...\n\n")
@@ -338,7 +338,7 @@ func IsTokenExpired(accessToken string) bool {
 	if err := json.Unmarshal(payload, &claims); err != nil || claims.Exp == 0 {
 		return true
 	}
-	return time.Now().Add(60 * time.Second).Unix() >= claims.Exp
+	return time.Now().Add(60*time.Second).Unix() >= claims.Exp
 }
 
 // RefreshTokens exchanges a refresh token for a new access + refresh token pair.

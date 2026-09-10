@@ -125,6 +125,7 @@ var modifyOrderCmd = &cobra.Command{
 			Quantity:   orderQty,
 			TakeProfit: orderTP,
 			StopLoss:   orderSL,
+			ReduceOnly: orderReduceOnly,
 		})
 		return nil
 	},
@@ -199,6 +200,7 @@ func init() {
 	modifyOrderCmd.Flags().Float64Var(&orderPrice, "price", 0, "New limit price")
 	modifyOrderCmd.Flags().Float64Var(&orderTP, "tp", 0, "New take profit price")
 	modifyOrderCmd.Flags().Float64Var(&orderSL, "sl", 0, "New stop loss price")
+	modifyOrderCmd.Flags().BoolVar(&orderReduceOnly, "reduce-only", false, "Current reduce-only flag of the order; a modify cannot change it")
 
 	// Get order flags
 	getOrderCmd.Flags().StringVar(&orderID, "order-id", "", "Order ID")

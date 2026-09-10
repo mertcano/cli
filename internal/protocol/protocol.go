@@ -5,22 +5,22 @@ import "encoding/json"
 // IPC command names (CLI → Daemon)
 const (
 	// Market data
-	CmdGetBBO             = "get_bbo"
-	CmdGetOrderBook       = "get_orderbook"
-	CmdGetTrades          = "get_trades"
-	CmdGetCandles         = "get_candles"
-	CmdGetMarkPrice       = "get_mark_price"
-	CmdGetFundingRate     = "get_funding_rate"
-	CmdGetOpenInterest    = "get_open_interest"
-	CmdGetUnderlierPrice  = "get_underlier_price"
+	CmdGetBBO            = "get_bbo"
+	CmdGetOrderBook      = "get_orderbook"
+	CmdGetTrades         = "get_trades"
+	CmdGetCandles        = "get_candles"
+	CmdGetMarkPrice      = "get_mark_price"
+	CmdGetFundingRate    = "get_funding_rate"
+	CmdGetOpenInterest   = "get_open_interest"
+	CmdGetUnderlierPrice = "get_underlier_price"
 
 	// Orders
-	CmdPlaceOrder   = "place_order"
-	CmdCancelOrder  = "cancel_order"
-	CmdCancelAll    = "cancel_all"
-	CmdModifyOrder  = "modify_order"
-	CmdGetOrder     = "get_order"
-	CmdGetOrders    = "get_orders"
+	CmdPlaceOrder  = "place_order"
+	CmdCancelOrder = "cancel_order"
+	CmdCancelAll   = "cancel_all"
+	CmdModifyOrder = "modify_order"
+	CmdGetOrder    = "get_order"
+	CmdGetOrders   = "get_orders"
 
 	// Positions
 	CmdGetPositions  = "get_positions"
@@ -157,6 +157,7 @@ type ModifyOrderParams struct {
 	Quantity   float64 `json:"quantity,omitempty"`
 	TakeProfit float64 `json:"take_profit,omitempty"`
 	StopLoss   float64 `json:"stop_loss,omitempty"`
+	ReduceOnly bool    `json:"reduce_only"`
 }
 
 type GetOrderParams struct {
