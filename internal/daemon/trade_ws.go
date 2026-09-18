@@ -45,7 +45,7 @@ type tradeMessage struct {
 	Err                       json.RawMessage `json:"err,omitempty"`
 }
 
-// terminalOrderStatuses are order statuses that are final (not ACK).
+// terminalOrderStatuses are order statuses that represent a final response for a pending command wait (not ACK).
 var terminalOrderStatuses = map[string]bool{
 	"FILLED":                               true,
 	"CANCELLED":                            true,
@@ -73,6 +73,20 @@ var terminalOrderStatuses = map[string]bool{
 	"REJECTED_TOO_MANY_OPEN_ORDERS":        true,
 	"REJECTED_OPEN_INTEREST_LIMIT":         true,
 	"MODIFIED":                             true,
+}
+
+// isOrderClosed returns true if the order status means the order is no longer working on the book.
+// MODIFIED and CANNOT_MODIFY_PARTIAL_FILL indicate an active order is still present on the book.
+func isOrderClosed(status string) bool {
+	switch status {
+	case "FILLED", "CANCELLED", "CANCELLED_STP", "REJECTED", "NO_SUCH_ORDER",
+		"REJECTED_MARKET_CLOSED", "REJECTED_FAILED_TO_PROCESS",
+		"REJECTED_WOULD_BREACH_MAX_NOTIONAL", "REJECTED_TOO_MANY_OPEN_ORDERS",
+		"REJECTED_OPEN_INTEREST_LIMIT":
+		return true
+	default:
+		return false
+	}
 }
 
 // pendingRequest waits for a specific response from the Trade WS.
@@ -302,9 +316,9 @@ func (t *TradeWS) dispatch(conn *websocket.Conn, data []byte) {
 	if len(msg.OrderResponse) > 0 {
 		var order Order
 		if err := json.Unmarshal(msg.OrderResponse, &order); err == nil {
-			// Terminal statuses remove the cached open order; non-terminal
-			// statuses (e.g. ACK) update the cache with the latest state.
-			if terminalOrderStatuses[order.Status] {
+			// Evict closed/terminal orders from the cache. Modified or partially filled orders
+			// remain active on the order book and must stay in cache.
+			if isOrderClosed(order.Status) {
 				t.state.removeOrder(order.OrderID)
 			} else {
 				t.state.setOrder(&order)
