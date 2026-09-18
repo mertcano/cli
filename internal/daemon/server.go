@@ -579,7 +579,22 @@ func (s *Server) handleCancelOrder(ctx context.Context, p protocol.CancelOrderPa
 			"cancel_order_id_type": p.CancelIDType,
 		},
 	}
-	// Cancel responses are always terminal (CANCELLED, NO_SUCH_ORDER, etc.).
+
+	// Handle TWAP cancels separately: they respond with twap_response or generic ack,
+	// not an individual order_response keyed by order_id.
+	if p.CancelIDType == "twap_id" || p.CancelIDType == "client_twap_id" {
+		data, err := s.d.trade.Send(ctx, cmd, "twap_response", p.OrderID)
+		if err != nil {
+			// Fall back to ack if the server answers TWAP cancels with an ack frame
+			data, err = s.d.trade.Send(ctx, cmd, "ack", "")
+			if err != nil {
+				return errResp(err.Error())
+			}
+		}
+		return okResp(data)
+	}
+
+	// Standard order cancel: responses are terminal order_response frames.
 	// Bind the pending match to the explicit request ID (order_id or client
 	// order id) so an unrelated order_response cannot satisfy this wait.
 	matchID := p.OrderID
